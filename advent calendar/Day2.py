@@ -19,7 +19,7 @@ for step in plottedcourse :
     elif (course[0]) == "down":
         depth += int(course[1])
 
-print(depth * horizontal)
+print("First part of the challenge " + str(depth * horizontal))
 
 horizontal = 0 
 depth = 0
@@ -36,4 +36,4 @@ for step in plottedcourse :
         aim += int(course[1])
         
 
-print(depth * horizontal)
+print("Seccond part of the challenge " + str(depth * horizontal))

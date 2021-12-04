@@ -34,7 +34,7 @@ def commonbit(pos, data):
     zeroCount = 0
     oneCount = 0
     for value in data:
-        if value[pos] == "0":
+        if int(value[pos]) == 0:
             zeroCount += 1
         else:
             oneCount += 1
@@ -43,44 +43,50 @@ def commonbit(pos, data):
     elif zeroCount < oneCount:
         return 1
     else:
-        return 2 # This means that only 2 values remain, so the decision to which number keep should be taken another way.
+        return 2 # This means equal 1's and 0's, so the decision to which number keep should be taken another way.
 
 oxigen = binary
-pos= 0
+temporal = []
+pos = 0
 while len(oxigen) > 1:
     bit = commonbit(pos, oxigen)
     if bit == 2:
         for value in oxigen:
-            if value[pos] != 1:
-                oxigen.remove(value)
+            if int(value[pos]) == 1:
+                temporal.append(value)
     elif bit == 1:
         for value in oxigen:
-            if value[pos] != 1:
-                oxigen.remove(value)
+            if int(value[pos]) == 1:
+                temporal.append(value)
     elif bit == 0:
         for value in oxigen:
-            if value[pos] != 0:
-                oxigen.remove(value)
+            if int(value[pos]) == 0:
+                temporal.append(value)
+    oxigen = temporal
+    temporal = []
     pos +=1
 
 print("Oxigen Level " + str(int(oxigen[0], 2)))
 
 co2 = binary
-pos= 0
+temporal = []
+pos = 0
 while len(co2) > 1:
     bit = commonbit(pos, co2)
     if bit == 2:
         for value in co2:
-            if value[pos] != 0:
-                co2.remove(value)
+            if int(value[pos]) == 0:
+                temporal.append(value)
     elif bit == 1:
         for value in co2:
-            if value[pos] != 0:
-                co2.remove(value)
+            if int(value[pos]) == 0:
+                temporal.append(value)
     elif bit == 0:
         for value in co2:
-            if value[pos] != 1:
-                co2.remove(value)
+            if int(value[pos]) == 1:
+                temporal.append(value)
+    co2 = temporal
+    temporal = []
     pos +=1
 
 print("Co2 Level " + str(int(co2[0], 2)))
